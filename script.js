@@ -68,11 +68,19 @@
 // }
 // first()
 
-let val=40
+// let val=40
 
-function calc(){
-    console.log(val)
-    let val=100
-}
+// function calc(){
+//     console.log(val)
+//     let val=100
+// }
 
-calc()
+// calc()
+// console.log("first line")
+// console.log("second linee")// this is syncronous code which is executed line by line wait for the first code to execute
+
+console.log("first line")
+setTimeout(() => {
+  console.log("after 2 sec");
+}, 2000);
+console.log("second linee")
