@@ -79,8 +79,56 @@
 // console.log("first line")
 // console.log("second linee")// this is syncronous code which is executed line by line wait for the first code to execute
 
-console.log("first line")
-setTimeout(() => {
-  console.log("after 2 sec");
-}, 2000);
-console.log("second linee")
+// console.log("first line")
+// setTimeout(() => {console.log("after 2 sec");}, 2000);
+// console.log("second linee")// this is aynchronous as code is waited for another task to complete `
+
+// setTimeout(()=>{
+//     console.log("line after 5 sec")
+// },5000)// to set a timeout of some time we use timeout 
+
+// const timerID = setInterval(()=>{"set interval"},1000)
+
+// const timeoutID = setTimeout(()=>{clearInterval(timerID)},1000)
+// // clear time interval
+
+
+
+// let count = 1; 
+// const intervalId = setInterval(function() {
+//     console.log(count);
+//     count++;            
+//     if (count > 10) {
+//         clearInterval(intervalId); 
+//     }
+// }, 1000);
+
+// let num=1;
+
+// const id= setInterval(()=>{
+//     if(num==10)clearInterval(id)
+//         console.log(num)
+//     num+=1
+// })
+
+const name = document.querySelector("#name")
+const btn = document.querySelector(".btn")
+const list = document.querySelector(".list")
+btn.addEventListener('click',()=>{
+    if(name.value==""){
+        alert("enter the name")
+        return;
+    }
+    const li=document.createElement('li')
+    const dlt = document.createElement('button')
+    dlt.innerText="delete"
+    li.innerText=name.value;
+    dlt.addEventListener('click',()=>{
+        list.removeChild(li)
+    })
+    li.appendChild(dlt)
+    list.appendChild(li)
+    
+    
+    name.value=""
+})
