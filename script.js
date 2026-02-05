@@ -1,5 +1,5 @@
 // const para=document.querySelector("p")
-// para.innerText="Hello Shubham"
+// para.innerText="Hello tarun"
 // para.style.backgroundColor="Black"
 // para.style.color="White"
 
@@ -111,24 +111,126 @@
 //     num+=1
 // })
 
-const name = document.querySelector("#name")
-const btn = document.querySelector(".btn")
-const list = document.querySelector(".list")
-btn.addEventListener('click',()=>{
-    if(name.value==""){
-        alert("enter the name")
-        return;
-    }
-    const li=document.createElement('li')
-    const dlt = document.createElement('button')
-    dlt.innerText="delete"
-    li.innerText=name.value;
-    dlt.addEventListener('click',()=>{
-        list.removeChild(li)
+// const name = document.querySelector("#name")
+// const btn = document.querySelector(".btn")
+// const list = document.querySelector(".list")
+// btn.addEventListener('click',()=>{
+//     if(name.value==""){
+//         alert("enter the name")
+//         return;
+//     }
+//     const li=document.createElement('li')
+//     const dlt = document.createElement('button')
+//     dlt.innerText="delete"
+//     li.innerText=name.value;
+//     dlt.addEventListener('click',()=>{
+//         list.removeChild(li)
+//     })
+//     li.appendChild(dlt)
+//     list.appendChild(li)
+    
+    
+//     name.value=""
+// })
+
+
+// function print(num){
+//     setTimeout(()=>{//high order function
+//         console.log("inside print")
+//          num()
+//     },2000)
+// }
+
+// function callback(){//callback fucntion is used to call another function
+//     console.log("inside callback")
+// }
+// print(callback)
+
+// console.log("Starting homework...");
+//     setTimeout(() => {
+//         console.log ("Homework done!");
+//         console.log("Starting dinner...");
+//         setTimeout(() => {
+//             console.log("Dinnerdone!");
+//             console.log("Getting ready to go out...");
+//             setTimeout(() => {
+//                 console.log("goin to mog some stupid ass people");
+//             }, 1000); // after dinner
+//         }, 1500); // dinner time
+//     }, 2000); // homework time
+
+
+const p = new Promise((resolve,reject)=>{
+    let done = true;
+    setTimeout(() => {
+        if(done){
+            resolve("work has been completed")
+        }else{
+            reject("work has not been completed")
+        }
+    }, 5000);
+})
+p.then((data)=>{
+    console.log(data)
+}).catch((er)=>{
+    console.log(err)
+}).finally(()=>{
+    console.log("finally back")
+})   
+
+function doHomework(){
+    const p = new Promise((res,rej)=>{
+        let done = true;  
+        setTimeout(() => {
+            if(done){
+                console.log("homework comeplted")
+                res("homework is done")
+            }else(
+                rej("homework is not completed")
+            )
+        }, 2000);
     })
-    li.appendChild(dlt)
-    list.appendChild(li)
+    return p 
+}
+function eatdinner(){
+    const p = new Promise((res,rej)=>{
+        let done = true;  
+        setTimeout(() => {
+            if(done){
+                console.log("dinner comeplted")
+                res("dinner is done")
+            }else(
+                rej("dinner is not completed")
+            )
+        }, 2000);
+    })
+    return p 
+}
+function gotothePlayground(){
+    const p = new Promise((res,rej)=>{
+        let done = true;  
+        setTimeout(() => {
+            if(done){
+                console.log("went to the playground")
+                res("playground time!")
+            }else(
+                rej("not allowed to go !!")
+            )
+        }, 2000);
+    })
+    return p 
+}
+doHomework().then((data) => {
+    console.log(data)
+    return eatdinner()
+}).then((data) => {
+    console.log(data)
+    return gotothePlayground()
     
-    
-    name.value=""
+}).then((data)=>{
+    console.log(data)
+}).catch((err)=>{
+    console.log("error")
+}).finally((data)=>{
+    console.log("went to sleep")
 })
